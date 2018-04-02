@@ -1,0 +1,876 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E25286D-665A-4338-8D6A-1C22B823614E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UGC</RootNamespace>
+    <AssemblyName>UGC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\Crystal.Reports.Essentials.13.0.20.2399\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\Crystal.Reports.Essentials.13.0.20.2399\lib\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\Crystal.Reports.Essentials.13.0.20.2399\lib\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\Crystal.Reports.Essentials.13.0.20.2399\lib\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Form2\Form2\ExcelLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>.\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>.\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>.\itextsharp.xtra.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation, Version=1.5.6298.3372, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.5.6298.3372\lib\net35-client\WinFormAnimation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbStr.cs" />
+    <Compile Include="CurrencyConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrencyConvert.Designer.cs">
+      <DependentUpon>CurrencyConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="fd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fd.Designer.cs">
+      <DependentUpon>fd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FdReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FdReport.Designer.cs">
+      <DependentUpon>FdReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmsplashscreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmsplashscreen.Designer.cs">
+      <DependentUpon>frmsplashscreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="investment1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="investment1.Designer.cs">
+      <DependentUpon>investment1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Open.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Open.Designer.cs">
+      <DependentUpon>Open.cs</DependentUpon>
+    </Compile>
+    <Compile Include="open2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="open2.Designer.cs">
+      <DependentUpon>open2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="opentb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="opentb.Designer.cs">
+      <DependentUpon>opentb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="report.Designer.cs">
+      <DependentUpon>report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="report2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="report2.Designer.cs">
+      <DependentUpon>report2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reporttesting1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reporttesting1.Designer.cs">
+      <DependentUpon>reporttesting1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Tbill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tbill.Designer.cs">
+      <DependentUpon>Tbill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TbillnewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TbillnewReport.Designer.cs">
+      <DependentUpon>TbillnewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TbillReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TbillReport.Designer.cs">
+      <DependentUpon>TbillReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tbondexpire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tbondexpire.Designer.cs">
+      <DependentUpon>Tbondexpire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TbondReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TbondReport.Designer.cs">
+      <DependentUpon>TbondReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="testing form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testing form.Designer.cs">
+      <DependentUpon>testing form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tobeexpired_fds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tobeexpired_fds.Designer.cs">
+      <DependentUpon>tobeexpired_fds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Toexpired.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Toexpired.Designer.cs">
+      <DependentUpon>Toexpired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreasureyBond.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreasureyBond.Designer.cs">
+      <DependentUpon>TreasureyBond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet19.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet20.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet20.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet22.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet23.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet23.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet24.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet24.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet25.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet25.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ugcdatabaseDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ugcdatabaseDataSet9.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CurrencyConvert.resx">
+      <DependentUpon>CurrencyConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fd.resx">
+      <DependentUpon>fd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FdReport.resx">
+      <DependentUpon>FdReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FdReportrdlc.rdlc" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmsplashscreen.resx">
+      <DependentUpon>frmsplashscreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="investment1.resx">
+      <DependentUpon>investment1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Open.resx">
+      <DependentUpon>Open.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="open2.resx">
+      <DependentUpon>open2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="opentb.resx">
+      <DependentUpon>opentb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="report.resx">
+      <DependentUpon>report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="report2.resx">
+      <DependentUpon>report2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reporttest1.rdlc" />
+    <EmbeddedResource Include="Tbill.resx">
+      <DependentUpon>Tbill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TbillnewReport.resx">
+      <DependentUpon>TbillnewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TbillnewrReportRDLC.rdlc" />
+    <EmbeddedResource Include="TbillReport.resx">
+      <DependentUpon>TbillReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TbillReportRDLC.rdlc" />
+    <EmbeddedResource Include="Tbondexpire.resx">
+      <DependentUpon>Tbondexpire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TbondReport.resx">
+      <DependentUpon>TbondReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TbondReportrdlc.rdlc" />
+    <EmbeddedResource Include="testing form.resx">
+      <DependentUpon>testing form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tobeexpired_fds.resx">
+      <DependentUpon>tobeexpired_fds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Toexpired.resx">
+      <DependentUpon>Toexpired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreasureyBond.resx">
+      <DependentUpon>TreasureyBond.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Tbill.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ugcdatabaseDataSet.xsc">
+      <DependentUpon>ugcdatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet.xss">
+      <DependentUpon>ugcdatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet1.xsc">
+      <DependentUpon>ugcdatabaseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet1.xss">
+      <DependentUpon>ugcdatabaseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet10.xsc">
+      <DependentUpon>ugcdatabaseDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet10.xss">
+      <DependentUpon>ugcdatabaseDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet11.xsc">
+      <DependentUpon>ugcdatabaseDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet11.xss">
+      <DependentUpon>ugcdatabaseDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet12.xsc">
+      <DependentUpon>ugcdatabaseDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet12.xss">
+      <DependentUpon>ugcdatabaseDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet13.xsc">
+      <DependentUpon>ugcdatabaseDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet13.xss">
+      <DependentUpon>ugcdatabaseDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet14.xsc">
+      <DependentUpon>ugcdatabaseDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet14.xss">
+      <DependentUpon>ugcdatabaseDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet15.xsc">
+      <DependentUpon>ugcdatabaseDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet15.xss">
+      <DependentUpon>ugcdatabaseDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet16.xsc">
+      <DependentUpon>ugcdatabaseDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet16.xss">
+      <DependentUpon>ugcdatabaseDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet17.xsc">
+      <DependentUpon>ugcdatabaseDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet17.xss">
+      <DependentUpon>ugcdatabaseDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet18.xsc">
+      <DependentUpon>ugcdatabaseDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet18.xss">
+      <DependentUpon>ugcdatabaseDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet19.xsc">
+      <DependentUpon>ugcdatabaseDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet19.xss">
+      <DependentUpon>ugcdatabaseDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet2.xsc">
+      <DependentUpon>ugcdatabaseDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet2.xss">
+      <DependentUpon>ugcdatabaseDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet20.xsc">
+      <DependentUpon>ugcdatabaseDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet20.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet20.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet20.xss">
+      <DependentUpon>ugcdatabaseDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet21.xsc">
+      <DependentUpon>ugcdatabaseDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet21.xss">
+      <DependentUpon>ugcdatabaseDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet22.xsc">
+      <DependentUpon>ugcdatabaseDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet22.xss">
+      <DependentUpon>ugcdatabaseDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet23.xsc">
+      <DependentUpon>ugcdatabaseDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet23.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet23.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet23.xss">
+      <DependentUpon>ugcdatabaseDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet24.xsc">
+      <DependentUpon>ugcdatabaseDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet24.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet24.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet24.xss">
+      <DependentUpon>ugcdatabaseDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet25.xsc">
+      <DependentUpon>ugcdatabaseDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet25.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet25.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet25.xss">
+      <DependentUpon>ugcdatabaseDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet3.xsc">
+      <DependentUpon>ugcdatabaseDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet3.xss">
+      <DependentUpon>ugcdatabaseDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet4.xsc">
+      <DependentUpon>ugcdatabaseDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet4.xss">
+      <DependentUpon>ugcdatabaseDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet5.xsc">
+      <DependentUpon>ugcdatabaseDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet5.xss">
+      <DependentUpon>ugcdatabaseDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet6.xsc">
+      <DependentUpon>ugcdatabaseDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet6.xss">
+      <DependentUpon>ugcdatabaseDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet7.xsc">
+      <DependentUpon>ugcdatabaseDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet7.xss">
+      <DependentUpon>ugcdatabaseDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet8.xsc">
+      <DependentUpon>ugcdatabaseDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet8.xss">
+      <DependentUpon>ugcdatabaseDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet9.xsc">
+      <DependentUpon>ugcdatabaseDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="ugcdatabaseDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ugcdatabaseDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcdatabaseDataSet9.xss">
+      <DependentUpon>ugcdatabaseDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet.xsc">
+      <DependentUpon>ugcnewDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcnewDataSet.xss">
+      <DependentUpon>ugcnewDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet1.xsc">
+      <DependentUpon>ugcnewDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcnewDataSet1.xss">
+      <DependentUpon>ugcnewDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet2.xsc">
+      <DependentUpon>ugcnewDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcnewDataSet2.xss">
+      <DependentUpon>ugcnewDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet3.xsc">
+      <DependentUpon>ugcnewDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcnewDataSet3.xss">
+      <DependentUpon>ugcnewDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet4.xsc">
+      <DependentUpon>ugcnewDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcnewDataSet4.xss">
+      <DependentUpon>ugcnewDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet5.xsc">
+      <DependentUpon>ugcnewDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcnewDataSet5.xss">
+      <DependentUpon>ugcnewDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSetbillsss.xsc">
+      <DependentUpon>ugcnewDataSetbillsss.xsd</DependentUpon>
+    </None>
+    <None Include="ugcnewDataSetbillsss.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ugcnewDataSetbillsss.xss">
+      <DependentUpon>ugcnewDataSetbillsss.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExcelLibrary.dll" />
+    <None Include="Resources\1 %281%29.jpg" />
+    <None Include="Resources\images2.png" />
+    <None Include="Resources\UgcLogoL.jpg" />
+    <None Include="Resources\Investment Module.jpg" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\futuristic-technology-interface-computer-data-screen-with-copy-space_4ytinbl2__F0000.png" />
+    <None Include="Resources\images1.png" />
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
